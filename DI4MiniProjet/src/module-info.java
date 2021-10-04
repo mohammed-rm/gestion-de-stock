@@ -1,2 +1,0 @@
-module DI4MiniProjet {
-}
