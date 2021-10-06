@@ -1,5 +1,5 @@
 package management;
 
-public class Producer {
+public class Log {
 
 }
