@@ -1,8 +1,9 @@
 package users;
 
 import management.Stock;
+import notification.Observer;
 
-public class Consumer {
+public class Consumer implements Observer{
 
 	/*********************************************************************/
 	/***************************** ATTRIBUTES ****************************/
@@ -51,6 +52,13 @@ public class Consumer {
 	 */
 	public void setStock(Stock stock) {
 		this.stock = stock;
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

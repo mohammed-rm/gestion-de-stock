@@ -2,7 +2,9 @@ package management;
 
 import java.util.ArrayList;
 
-public class Stock {
+import notification.Subject;
+
+public class Stock extends Subject{
 	
 	/*********************************************************************/
 	/***************************** ATTRIBUTES ****************************/
