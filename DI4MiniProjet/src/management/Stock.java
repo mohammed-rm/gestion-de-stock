@@ -9,72 +9,48 @@ public class Stock extends Subject{
 	/*********************************************************************/
 	/***************************** ATTRIBUTES ****************************/
 	/*********************************************************************/
-	private Integer element;
-	private Integer top;
-	private final Integer size = null;
-	private ArrayList<Integer> stack;
+	
+	private int top;
+	private static final Integer MAX = 20;
+	private int stack[];
 	
 	
 	/*********************************************************************/
 	/****************************** BUILDERS *****************************/
 	/*********************************************************************/
-	/**
-	 * @param element
-	 * @param top
-	 * @param stack
-	 */
-	public Stock(Integer element, Integer top, ArrayList<Integer> stack) {
-		super();
-		this.element = element;
-		this.top = top;
-		this.stack = stack;
+	
+	public Stock() {
+		this.top = -1;
+		this.stack = new int[MAX];
 	}
 	
 	
 	/*********************************************************************/
 	/***************************** GETS/SETS *****************************/
 	/*********************************************************************/
-	/**
-	 * @return the element
-	 */
-	public Integer getElement() {
-		return element;
-	}
-	/**
-	 * @param element the element to set
-	 */
-	public void setElement(Integer element) {
-		this.element = element;
-	}
+	
+	
 	/**
 	 * @return the top
 	 */
-	public Integer getTop() {
+	public int getTop() {
 		return top;
 	}
-	/**
-	 * @param top the top to set
-	 */
-	public void setTop(Integer top) {
-		this.top = top;
-	}
+	
+	
 	/**
 	 * @return the stack
 	 */
-	public ArrayList<Integer> getStack() {
+	public int[] getStack() {
 		return stack;
 	}
-	/**
-	 * @param stack the stack to set
-	 */
-	public void setStack(ArrayList<Integer> stack) {
-		this.stack = stack;
-	}
+	
+
 	/**
 	 * @return the size
 	 */
-	public Integer getSize() {
-		return size;
+	public Integer getMAX() {
+		return MAX;
 	}
 	
 	
@@ -83,4 +59,61 @@ public class Stock extends Subject{
 	/*********************************************************************/
 	
 	
+	public void push(int elt)
+	{
+		if(top>=MAX)
+		{
+			System.out.println("stack overflow");
+		}
+		else 
+		{
+			top++;
+			stack[top]=elt;
+		}
+	}
+	
+	public void pop()
+	{
+		if(top<0)
+		{
+			System.out.println("stack underflow");
+		
+		}
+		else 
+		{   
+			top--;
+		}
+	}
+	
+	
+	public int peek() 
+	{
+		if(top==-1) {
+			System.out.println("stack underflow");
+			return -1;    //add exception here
+		}
+		else
+		{
+			return stack[top];
+		}
+	}
+	
+	public boolean isEmpty()
+	{
+		if(top==-1) return true;
+		return false;
+	}
+	
+	public boolean isFull() 
+	{
+		if(top==MAX) return true;
+		return false;
+	}
+
+    public void clear() 
+{
+		while (top>-1) {
+			top--;
+	    }
+}
 }
