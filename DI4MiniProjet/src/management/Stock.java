@@ -1,7 +1,5 @@
 package management;
 
-import java.util.ArrayList;
-
 import notification.Subject;
 
 public class Stock extends Subject{
@@ -69,6 +67,7 @@ public class Stock extends Subject{
 		{
 			top++;
 			stack[top]=elt;
+			notifyObservers();
 		}
 	}
 	
@@ -82,6 +81,7 @@ public class Stock extends Subject{
 		else 
 		{   
 			top--;
+			notifyObservers();
 		}
 	}
 	
@@ -114,6 +114,8 @@ public class Stock extends Subject{
 {
 		while (top>-1) {
 			top--;
+			 
+			notifyObservers();
 	    }
 }
 }

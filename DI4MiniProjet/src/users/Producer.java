@@ -20,7 +20,6 @@ public class Producer implements Observer{
 	 * @param stock
 	 */
 	public Producer(String prodName, Stock stock) {
-		super();
 		this.prodName = prodName;
 		this.stock = stock;
 	}
