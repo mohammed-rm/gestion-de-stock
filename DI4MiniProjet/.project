@@ -18,17 +18,17 @@
 		<link>
 			<name>src/images/failure.png</name>
 			<type>1</type>
-			<location>C:/Users/RMICH Mohammed/Desktop/Logos/failure.png</location>
+			<location>C:/Users/RMICH Mohammed/Downloads/Logos (1)/failure.png</location>
 		</link>
 		<link>
 			<name>src/images/succes.png</name>
 			<type>1</type>
-			<location>C:/Users/RMICH Mohammed/Desktop/Logos/succes.png</location>
+			<location>C:/Users/RMICH Mohammed/Downloads/Logos (1)/succes.png</location>
 		</link>
 		<link>
 			<name>src/images/warning.png</name>
 			<type>1</type>
-			<location>C:/Users/RMICH Mohammed/Downloads/Logos.png</location>
+			<location>C:/Users/RMICH Mohammed/Downloads/Logos (1)/attention.png</location>
 		</link>
 	</linkedResources>
 </projectDescription>
