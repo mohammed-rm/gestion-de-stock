@@ -71,6 +71,13 @@ public class Stock extends Subject{
 		}
 	}
 	
+	public void afficher()
+	{
+		for(int i=0; i<=top;i++) 
+		{
+			System.out.println(stack[i]);
+		}
+	}
 	public void pop()
 	{
 		if(top<0)

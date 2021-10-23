@@ -129,7 +129,7 @@ public class AppView extends JFrame implements ActionListener {
 		panel_1.add(warningText);
 
 		// Icon path
-		String imgUrl = "images/warning.png";
+		String imgUrl = "images/failure.png";
 
 		// Layout to insert icon
 		GroupLayout layout = new GroupLayout(panel_1);
