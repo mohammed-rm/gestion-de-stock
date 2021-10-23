@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import management.Stock;
+
 public class AppView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -245,23 +247,38 @@ public class AppView extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		Object source = event.getSource();
 		String input = new String();
-		Integer result;
+		int result;
 
 		if (source == addButton) {
 			try {
+				Stock stock = new Stock();
 				input = addField.getText();
-				dialogFrameAdd();
-				System.out.print(input);
-
+				result = Integer.parseInt(input);
+				if ( (result > 0) && (result <= stock.getMAX()) )
+				{
+					dialogFrameAdd();
+					System.out.print(input);
+				}
+				else {
+					dialogFrameError();
+				}
 			} catch (Exception e) {
 				dialogFrameError();
 				e.printStackTrace();
 			}
 		} else if (source == removeButton) {
 			try {
-				input = addField.getText();
-				dialogFrameRemove();
-
+				Stock stock = new Stock();
+				input = removeField.getText();
+				result = Integer.parseInt(input);
+				if ( (result > 0) && (result <= stock.getMAX()) )
+				{
+					dialogFrameRemove();
+					System.out.print(input);
+				}
+				else {
+					dialogFrameError();
+				}
 			} catch (Exception e) {
 				dialogFrameError();
 				e.printStackTrace();
