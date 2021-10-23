@@ -98,8 +98,8 @@ public class AppView extends JFrame implements ActionListener {
 		mainFrameSettings();
 		tab.setBounds(TAB_LOCATION_X, TAB_LOCATION_Y, TAB_SIZE_X, TAB_SIZE_Y);
 
-		// Buttons 
-		setButtons(); 
+		// Buttons
+		setButtons();
 		addButton.addActionListener(this);
 		removeButton.addActionListener(this);
 		emptyButton.addActionListener(this);
@@ -140,12 +140,12 @@ public class AppView extends JFrame implements ActionListener {
 		vGroup.addGroup(layout.createParallelGroup().addComponent(img));
 		layout.setVerticalGroup(vGroup);
 
-		// Associate panels to tab 
+		// Associate panels to tab
 		tab.add("Edit Stock", panel_1);
 		tab.add("Show Stock", panel_2);
 		tab.add("About", panel_3);
 
-		// Add the tab to the main frame 
+		// Add the tab to the main frame
 		frame.add(tab);
 
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -222,7 +222,7 @@ public class AppView extends JFrame implements ActionListener {
 		addFrame.add(l);
 	}
 
-	public void dialogFrame() {
+	public void dialogFrameAdd() {
 		dialogFrame("Element added succefully", "images/succes.png");
 	}
 
@@ -250,27 +250,20 @@ public class AppView extends JFrame implements ActionListener {
 		if (source == addButton) {
 			try {
 				input = addField.getText();
-
-				// afficher le jdialog lorsque le bouton est cliqué
-				JDialog dialog = new JDialog(frame, "Welcome to WayToLearnX", true);
-				dialog.setLocationRelativeTo(frame);
-				dialog.setVisible(true);
+				dialogFrameAdd();
 				System.out.print(input);
 
 			} catch (Exception e) {
+				dialogFrameError();
 				e.printStackTrace();
 			}
 		} else if (source == removeButton) {
 			try {
 				input = addField.getText();
-
-				// afficher le jdialog lorsque le bouton est cliqué
-				JDialog dialog = new JDialog(frame, "Welcome to WayToLearnX", true);
-				dialog.setLocationRelativeTo(frame);
-				dialog.setVisible(true);
-				System.out.print(input);
+				dialogFrameRemove();
 
 			} catch (Exception e) {
+				dialogFrameError();
 				e.printStackTrace();
 			}
 		}
@@ -278,14 +271,10 @@ public class AppView extends JFrame implements ActionListener {
 		else if (source == emptyButton) {
 			try {
 				input = addField.getText();
-
-				// afficher le jdialog lorsque le bouton est cliqué
-				JDialog dialog = new JDialog(frame, "Welcome to WayToLearnX", true);
-				dialog.setLocationRelativeTo(frame);
-				dialog.setVisible(true);
-				System.out.print(input);
+				dialogFrameEmpty();
 
 			} catch (Exception e) {
+				dialogFrameError();
 				e.printStackTrace();
 			}
 		}
