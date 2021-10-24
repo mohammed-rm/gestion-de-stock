@@ -13,14 +13,12 @@ public class Main {
 		Stock stock = new Stock();
 		String file_name = "backup/backup_file.txt";
 		try {
-			Log data = new Log(file_name);
-			data.saveIntoFile("Test");
-			data.saveIntoFile("This is another line of text 40");
+			AppView appView = new AppView(stock);
 			System.out.println("Text File Written To " + file_name);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			System.out.println("Error");
 		}
-		AppView appView = new AppView(stock);
+
 	}
 
 }

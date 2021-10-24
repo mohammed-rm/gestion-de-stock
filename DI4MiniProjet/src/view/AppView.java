@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -16,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import management.Log;
 import management.Stock;
 
 public class AppView extends JFrame implements ActionListener {
@@ -279,6 +281,7 @@ public class AppView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
 		String input = new String();
+		Log data = new Log("backup/backup_file.txt");
 		int result;
 
 		// When add to stock button is clicked on
@@ -295,6 +298,7 @@ public class AppView extends JFrame implements ActionListener {
 						if ((result > 0) && (!stock.isFull())) {
 							stock.push(result);
 							stock.setTop(result);
+							data.saveIntoFile(input + " elements were successfully added to the stock on " + LocalDateTime.now());
 							dialogFrameAdd();
 							//System.out.print(stock);
 							stock.display();
@@ -325,6 +329,7 @@ public class AppView extends JFrame implements ActionListener {
 						result = Integer.parseInt(input);
 						if ((result > 0) && (!stock.isEmpty())) {
 							stock.pop();
+							data.saveIntoFile(input + " elements were successfully removed from the stock on " + LocalDateTime.now());
 							dialogFrameRemove();
 							stock.display();
 						} else {
@@ -345,6 +350,7 @@ public class AppView extends JFrame implements ActionListener {
 		else if (source == emptyButton) {
 			try {
 				stock.clear();
+				data.saveIntoFile("Stock was successfully emptied on " + LocalDateTime.now());
 				dialogFrameEmpty();
 				stock.display();
 
