@@ -3,10 +3,8 @@ package view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.regex.Pattern;
-
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,8 +19,6 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-
-import management.Log;
 import management.Stock;
 
 public class AppView extends JFrame implements ActionListener {
@@ -182,7 +178,6 @@ public class AppView extends JFrame implements ActionListener {
 		header = table.getTableHeader();
 		header.setBackground(Color.green);
 		panel_2.add(new JScrollPane(table));
-	
 
 		// Associate panels to tab
 		tab.add("Edit Stock", panel_1);
@@ -310,7 +305,7 @@ public class AppView extends JFrame implements ActionListener {
 		Object source = event.getSource();
 		String input = new String();
 		int result;
-		
+
 		// When add to stock button is clicked on
 		if (source == addButton) {
 			try {
@@ -325,8 +320,8 @@ public class AppView extends JFrame implements ActionListener {
 						if ((result > 0)) {
 							try {
 								stock.push(result);
-								model.setValueAt(result,stock.getMAX() - stock.getTop() - 1, 0);
-								//System.out.println("Top : " + stock.getTop());
+								model.setValueAt(result, stock.getMAX() - stock.getTop() - 1, 0);
+								// System.out.println("Top : " + stock.getTop());
 							} catch (ArrayIndexOutOfBoundsException e) {
 								System.out.println("Exception catched in push");
 							}
@@ -343,7 +338,8 @@ public class AppView extends JFrame implements ActionListener {
 				}
 			} catch (Exception e) {
 				dialogFrameError();
-				e.printStackTrace();
+				System.out.println("Stock is full, you cannot add more products! ");
+				// e.printStackTrace();
 			}
 		}
 		// When remove from stock button is clicked on
@@ -366,8 +362,8 @@ public class AppView extends JFrame implements ActionListener {
 									e.printStackTrace();
 									System.out.println("Exception in pop");
 								}
-								model.setValueAt(null, stock.getMAX() - stock.getTop() -2, 0);
-								//System.out.println("Top rem : " + stock.getTop());
+								model.setValueAt(null, stock.getMAX() - stock.getTop() - 2, 0);
+								// System.out.println("Top rem : " + stock.getTop());
 								j++;
 							}
 							dialogFrameRemove();
@@ -383,15 +379,15 @@ public class AppView extends JFrame implements ActionListener {
 				}
 			} catch (Exception e) {
 				dialogFrameError();
-				e.printStackTrace();
+				System.out.println("Stock is empty, there is no product to remove! ");
+				// e.printStackTrace();
 			}
 		}
 		// When empty button is clicked on
 		else if (source == emptyButton) {
 			try {
 				stock.clear();
-				for(int i = 0; i < stock.getMAX(); i++)
-				{
+				for (int i = 0; i < stock.getMAX(); i++) {
 					model.setValueAt(null, i, 0);
 				}
 				dialogFrameEmpty();
@@ -399,7 +395,8 @@ public class AppView extends JFrame implements ActionListener {
 
 			} catch (Exception e) {
 				dialogFrameError();
-				e.printStackTrace();
+				System.out.println("Stock is already empty! ");
+				// e.printStackTrace();
 			}
 		}
 	}
