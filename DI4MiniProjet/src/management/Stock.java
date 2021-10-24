@@ -12,7 +12,7 @@ public class Stock extends Subject{
 	/*********************************************************************/
 	
 	private int top;
-	private static final Integer MAX = 30;
+	private static final Integer MAX = 20;
 	private int stack[];
 	private Log data;
 	

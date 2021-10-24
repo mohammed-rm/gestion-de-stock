@@ -353,7 +353,7 @@ public class AppView extends JFrame implements ActionListener {
 					// There is a valid quantity
 					if (isNumber) {
 						result = Integer.parseInt(input);
-						if ((result > 0)) {
+						if ((result <= stock.getTop()+1)) {
 							int j = 0;
 							while ((j < result)) {
 								try {
