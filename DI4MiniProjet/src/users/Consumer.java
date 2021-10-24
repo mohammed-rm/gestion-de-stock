@@ -8,6 +8,8 @@ public class Consumer implements Observer{
 	/*********************************************************************/
 	/***************************** ATTRIBUTES ****************************/
 	/*********************************************************************/
+	
+	private int consID;
 	private String consName;
 	private Stock stock;
 	
@@ -25,10 +27,36 @@ public class Consumer implements Observer{
 		this.stock = stock;
 	}
 	
+	/**
+	 * @param consName
+	 * @param stock
+	 */
+	public Consumer(String consName, int id) {
+		super();
+		this.consName = consName;
+		this.consID = id;
+	}
+	
 	
 	/*********************************************************************/
 	/***************************** GETS/SETS *****************************/
 	/*********************************************************************/
+	
+	
+	/**
+	 * @return the consID
+	 */
+	public int getConsID() {
+		return consID;
+	}
+
+	/**
+	 * @param consID the consID to set
+	 */
+	public void setConsID(int consID) {
+		this.consID = consID;
+	}
+
 	/**
 	 * @return the consName
 	 */
