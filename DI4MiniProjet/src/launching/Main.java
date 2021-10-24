@@ -25,7 +25,7 @@ public class Main {
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("Exception catched in push");
+        	System.out.println("Exception catched in push");
         	}
        
         try {
@@ -33,7 +33,7 @@ public class Main {
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("Exception in push");
+         System.out.println("Exception in push");
         	}
         
         try {

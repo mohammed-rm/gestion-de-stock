@@ -295,9 +295,14 @@ public class AppView extends JFrame implements ActionListener {
 					// There is a valid quantity
 					if (isNumber) {
 						result = Integer.parseInt(input);
-						if ((result > 0) && (!stock.isFull())) {
+						if ((result > 0)) {
+							try {
 							stock.push(result);
-							stock.setTop(result);
+							}
+							catch(ArrayIndexOutOfBoundsException e)
+				        	{
+				        	System.out.println("Exception catched in push");
+				        	}
 							data.saveIntoFile(input + " element(s) successfully added to the stock on " + LocalDateTime.now());
 							dialogFrameAdd();
 							//System.out.print(stock);
@@ -329,8 +334,14 @@ public class AppView extends JFrame implements ActionListener {
 						result = Integer.parseInt(input);
 						if ((result > 0)) {
 							int j = 0;
-							while((!stock.isEmpty()) && (j < result)){
+							while( (j < result)){
+								try {
 								stock.pop();
+								}
+								catch(ArrayIndexOutOfBoundsException e)
+					        	{
+						        e.printStackTrace();  System.out.println("Exception in pop");
+						        }
 								j++;}
 							data.saveIntoFile(input + " element(s) successfully removed from the stock on " + LocalDateTime.now());
 							dialogFrameRemove();

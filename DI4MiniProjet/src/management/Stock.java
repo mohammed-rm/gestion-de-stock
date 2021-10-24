@@ -9,7 +9,7 @@ public class Stock extends Subject{
 	/*********************************************************************/
 	
 	private int top;
-	private static final Integer MAX = 2000;
+	private static final Integer MAX = 5;
 	private int stack[];
 	
 	
@@ -106,11 +106,13 @@ public class Stock extends Subject{
 			if(top==0) 
 				{
 					notifyUpdate(new Message("Warning ! the stock is almost empty !"));
+					notifyUpdate(new Message("the last product produced and still stored is :"+peek()));
 				}
 			if(top==-1)
 				{
 					notifyUpdate(new Message("Warning ! the stock is empty !"));
 				}
+			else {
 			try 
 				{
 					notifyUpdate(new Message("the last product produced and still stored is :"+peek()));
@@ -119,7 +121,7 @@ public class Stock extends Subject{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-			
+			}
 		 }
 	}
 	
