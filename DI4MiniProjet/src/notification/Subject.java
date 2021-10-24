@@ -3,6 +3,10 @@ package notification;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstract class to manage the concrete observer of stock
+ *
+ */
 public abstract class Subject {
 
 	// Observers list
@@ -23,7 +27,7 @@ public abstract class Subject {
 	}
 
 	/**
-	 * 
+	 * Notify observers
 	 */
 	public void notifyObservers() {
 		for (Observer observer : observers) {
