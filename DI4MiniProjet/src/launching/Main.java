@@ -10,8 +10,8 @@ public class Main {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
-		Consumer c1 = new Consumer("cons1");
-        Producer p1 = new Producer("prod1");
+		Consumer c1 = new Consumer("Cons1");
+        Producer p1 = new Producer("Prod1");
         
       
          
@@ -25,7 +25,7 @@ public class Main {
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception catched in push");
+        	e.printStackTrace();  System.out.println("Exception catched in push");
         	}
        
         try {
@@ -33,7 +33,7 @@ public class Main {
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in push");
+        	e.printStackTrace();  System.out.println("Exception in push");
         	}
         
         try {
@@ -41,7 +41,7 @@ public class Main {
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in push");
+        	e.printStackTrace();  System.out.println("Exception in push");
         	}
         
         try {
@@ -49,7 +49,7 @@ public class Main {
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in push");
+        	e.printStackTrace();  System.out.println("Exception in push");
         	}
         
         try {
@@ -57,7 +57,7 @@ public class Main {
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in push");
+        	e.printStackTrace();  System.out.println("Exception in push");
         	}
         
         
@@ -67,35 +67,35 @@ public class Main {
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in pop");
+        	e.printStackTrace();  System.out.println("Exception in pop");
         	}
         try {
         	s.pop();
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in pop");
+        	e.printStackTrace();  System.out.println("Exception in pop");
         	}
         try {
         	s.pop();
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in pop");
+        	e.printStackTrace();  System.out.println("Exception in pop");
         	}
         try {
         	s.pop();
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in pop");
+        	e.printStackTrace();  System.out.println("Exception in pop");
         	}
         try {
         	s.pop();
         	}
         catch(ArrayIndexOutOfBoundsException e)
         	{
-        	e.printStackTrace();  System.out.println("exception in pop");
+        	e.printStackTrace();  System.out.println("Exception in pop");
         	}
          
         /* 
@@ -110,12 +110,10 @@ public class Main {
         s.notifyUpdate(new Message("Second Message")); //s2 and s3 will receive the update
 	*/
 
-		
-		Stock stock = new Stock();
 		String file_name = "backup/backup_file.txt";
 		try {
-			AppView appView = new AppView(stock);
-			System.out.println("Text File Written To " + file_name);
+			AppView appView = new AppView(s);
+			System.out.println("Data saved in " + file_name);
 		} catch (Exception e) {
 			System.out.println("Error launching the application!");
 		}

@@ -93,7 +93,7 @@ public class Consumer implements Observer{
 	@Override
 	public void update(Message msg) {
 		// TODO Auto-generated method stub
-		 System.out.println("Consumer "+getConsName()+" got this message :" + msg.getMessageContent());
+		 System.out.println(" Consumer "+getConsName()+" got this message : " + msg.getMessageContent());
 	}	
 	
 }

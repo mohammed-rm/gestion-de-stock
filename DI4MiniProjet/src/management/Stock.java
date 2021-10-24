@@ -61,8 +61,8 @@ public class Stock extends Subject{
 	{
 		if(top>=MAX)
 		{
-			System.out.println("stack overflow");
-			notifyUpdate(new Message("Warning ! product not stocked, the stock is full !"));
+			System.out.println("Stack overflow");
+			notifyUpdate(new Message("Warning ! product not stocked, the stock is full ! "));
 			throw new ArrayIndexOutOfBoundsException();
 		}
 		else 
@@ -70,16 +70,16 @@ public class Stock extends Subject{
 			top++;
 			stack[top]=elt;
 			try {
-				notifyUpdate(new Message("the last product produced and still stored is :"+peek()));
+				notifyUpdate(new Message(" The last product produced and still stored is : "+peek()));
 			} catch (ArrayIndexOutOfBoundsException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		    if(top==MAX-1) {
-		    	 notifyUpdate(new Message("Warning ! the stock is full !"));
+		    	 notifyUpdate(new Message("Warning ! the stock is full ! "));
 		    }
 		    if(top==MAX-2) {
-		    	 notifyUpdate(new Message("Warning ! the stock is almost full !"));
+		    	 notifyUpdate(new Message("Warning ! the stock is almost full ! "));
 		    }
 		    
 		 }

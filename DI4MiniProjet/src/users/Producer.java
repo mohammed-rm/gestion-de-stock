@@ -91,7 +91,7 @@ public class Producer implements Observer{
 	@Override
 	public void update(Message msg) {
 		// TODO Auto-generated method stub
-		 System.out.println("producer"+getProdName()+" got this message :" + msg.getMessageContent());
+		 System.out.println("Producer "+getProdName()+" got this message : " + msg.getMessageContent());
 	}
 	
 	
