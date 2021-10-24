@@ -280,7 +280,6 @@ public class AppView extends JFrame implements ActionListener {
 		Object source = event.getSource();
 		String input = new String();
 		int result;
-		Stock stock = new Stock();
 
 		// When add to stock button is clicked on
 		if (source == addButton) {
