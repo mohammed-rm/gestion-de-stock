@@ -11,7 +11,7 @@ public class Log {
 	/*********************************************************************/
 	private String fileName;
 	private String filePath;
-	private boolean fileAppend = true; // To append or to overwrite file content
+	private boolean fileAppend = true; // To append (true) or to overwrite (false) file content
 
 	/*********************************************************************/
 	/****************************** BUILDERS *****************************/
@@ -25,34 +25,50 @@ public class Log {
 		filePath = path;
 	}
 
+	/**
+	 * Method to save stock data into a text file
+	 * @param data
+	 * @throws IOException
+	 */
 	public void saveIntoFile(String data) throws IOException {
 		FileWriter file = new FileWriter(filePath, fileAppend);
 		PrintWriter text = new PrintWriter(file);
 		text.printf("%s" + "%n", data);
 		text.close();
 	}
-
-	public static void main(String arg[]) {
-		String file_name = "/DI4MiniProjet/backup";
-		/*
-		 * try{ ReadFile file = new ReadFile(file_name); String[] aryLines =
-		 * file.OpenFile(); int i; for(i=0; i < aryLines.length; i++) {
-		 * System.out.println(aryLines[i]); } catch (IOException e) {
-		 * System.out.println("Error"); }
-		 */
-		try {
-			Log data = new Log(file_name);
-			data.saveIntoFile("Test");
-			data.saveIntoFile("This is another line of text");
-			System.out.println("Text File Written To");
-		} catch (IOException e) {
-			System.out.println("Error");
-		}
-	}
-
 	/*********************************************************************/
 	/***************************** GETS/SETS *****************************/
 	/*********************************************************************/
+	
+	
+	/**
+	 * @return the filePath
+	 */
+	public String getFilePath() {
+		return filePath;
+	}
+
+	/**
+	 * @return the fileAppend
+	 */
+	public boolean isFileAppend() {
+		return fileAppend;
+	}
+
+	/**
+	 * @param filePath the filePath to set
+	 */
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	/**
+	 * @param fileAppend the fileAppend to set
+	 */
+	public void setFileAppend(boolean fileAppend) {
+		this.fileAppend = fileAppend;
+	}
+
 	/**
 	 * @return the fileName
 	 */
