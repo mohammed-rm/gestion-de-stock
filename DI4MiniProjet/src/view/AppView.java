@@ -135,7 +135,7 @@ public class AppView extends JFrame implements ActionListener {
 		infoRem.setBounds(270, 160, 200, 200);
 
 		JLabel infoAdd = new JLabel();
-		infoAdd.setText("Product to add");
+		infoAdd.setText("Product Id to add");
 		infoAdd.setBounds(310, 60, 200, 200);
 
 		// Current static time
@@ -177,7 +177,7 @@ public class AppView extends JFrame implements ActionListener {
 		// Stack display
 		model = new DefaultTableModel(stock.getMAX(), 1);
 		table = new JTable(model);
-		table.getColumnModel().getColumn(0).setHeaderValue("Stock");
+		table.getColumnModel().getColumn(0).setHeaderValue("Stock Products");
 		table.getTableHeader().resizeAndRepaint();
 		header = table.getTableHeader();
 		header.setBackground(Color.green);
