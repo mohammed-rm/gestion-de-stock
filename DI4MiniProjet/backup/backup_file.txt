@@ -40,3 +40,25 @@ Stock was successfully emptied on 2021-10-24T17:35:12.180282200
 3 element(s) successfully added to the stock on 2021-10-24T17:55:54.082214400
 4 element(s) successfully added to the stock on 2021-10-24T17:56:03.004250700
 2 element(s) successfully removed from the stock on 2021-10-24T17:56:14.014375700
+the element :1successfully added to the stock on 2021-10-24T18:19:47.056543900
+the element :2successfully added to the stock on 2021-10-24T18:19:47.095544
+the element :3successfully added to the stock on 2021-10-24T18:19:47.096544600
+the element :4successfully added to the stock on 2021-10-24T18:19:47.097544
+the element :5successfully added to the stock on 2021-10-24T18:19:47.097544
+Element(s) successfully deleted to the stock on 2021-10-24T18:19:47.098618800
+Element(s) successfully deleted to the stock on 2021-10-24T18:19:47.098618800
+Element(s) successfully deleted to the stock on 2021-10-24T18:19:47.099648300
+Element(s) successfully deleted to the stock on 2021-10-24T18:19:47.100648400
+Element(s) successfully deleted to the stock on 2021-10-24T18:19:47.101124900
+the element :1successfully added to the stock on 2021-10-24T18:24:46.903268200
+the element :2successfully added to the stock on 2021-10-24T18:24:46.960264800
+the element :3successfully added to the stock on 2021-10-24T18:24:46.962263500
+the element :4successfully added to the stock on 2021-10-24T18:24:46.964183500
+the element :5successfully added to the stock on 2021-10-24T18:24:46.965450400
+Element(s) successfully deleted to the stock on 2021-10-24T18:24:46.967641900
+Element(s) successfully deleted to the stock on 2021-10-24T18:24:46.968795500
+Element(s) successfully deleted to the stock on 2021-10-24T18:24:46.969780300
+Element(s) successfully deleted to the stock on 2021-10-24T18:24:46.970780100
+Element(s) successfully deleted to the stock on 2021-10-24T18:24:46.972780700
+the element :5successfully added to the stock on 2021-10-24T18:24:52.654844100
+5 element(s) successfully added to the stock on 2021-10-24T18:24:52.656797700

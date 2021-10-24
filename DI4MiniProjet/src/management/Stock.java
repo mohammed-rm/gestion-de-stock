@@ -1,5 +1,8 @@
 package management;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+
 import notification.Subject;
 
 public class Stock extends Subject{
@@ -11,7 +14,7 @@ public class Stock extends Subject{
 	private int top;
 	private static final Integer MAX = 5;
 	private int stack[];
-	
+	private Log data;
 	
 	/*********************************************************************/
 	/****************************** BUILDERS *****************************/
@@ -20,6 +23,7 @@ public class Stock extends Subject{
 	public Stock() {
 		this.top = -1;
 		this.stack = new int[MAX];
+		data = new Log("backup/backup_file.txt");
 	}
 	
 	
@@ -69,6 +73,13 @@ public class Stock extends Subject{
 		{
 			top++;
 			stack[top]=elt;
+			//write into file
+			try {
+				data.saveIntoFile("the element :"+elt+ "successfully added to the stock on " + LocalDateTime.now());
+			} catch (IOException e1) {
+				System.out.println("something went wrong with saveIntoFile");
+			}
+			//notify observers
 			try {
 				notifyUpdate(new Message(" The last product produced and still stored is : "+peek()));
 			} catch (ArrayIndexOutOfBoundsException e) {
@@ -103,6 +114,13 @@ public class Stock extends Subject{
 		else 
 		{   
 			top--;
+		  //write into file
+			try {
+				data.saveIntoFile("Element(s) successfully deleted to the stock on " + LocalDateTime.now());
+			} catch (IOException e1) {
+				System.out.println("something went wrong with saveIntoFile");
+			}
+			//notify observers
 			if(top==0) 
 				{
 					notifyUpdate(new Message("Warning ! the stock is almost empty !"));
@@ -118,7 +136,6 @@ public class Stock extends Subject{
 					notifyUpdate(new Message("the last product produced and still stored is :"+peek()));
 				} catch (ArrayIndexOutOfBoundsException e) 
 					{
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 			}
@@ -161,6 +178,13 @@ public class Stock extends Subject{
 			{
 				top--;
 			}
+		    //write into file
+			try {
+				data.saveIntoFile("Element(s) successfully deleted to the stock on " + LocalDateTime.now());
+			} catch (IOException e1) {
+				System.out.println("something went wrong with saveIntoFile");
+			}
+			//notify observers
 			 notifyUpdate(new Message("Warning ! the stock is CLEARED !"));
 	}
 
