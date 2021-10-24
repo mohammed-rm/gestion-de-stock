@@ -175,27 +175,12 @@ public class AppView extends JFrame implements ActionListener {
 		layout.setVerticalGroup(group);
 
 		// Stack display
-		/*
-		 * String[] columns = new String[] {"Stock"}; String[][] row = new String[5][];
-		 */
-		// JTable table = new JTable(stock.getMAX(),1);
-		/*DefaultTableModel model = new DefaultTableModel(stock.getMAX(), 1);
-		JTable table = new JTable(model);
-		table.getColumnModel().getColumn(0).setHeaderValue("Stock");
-		// Force the header to resize and repaint itself
-		table.getTableHeader().resizeAndRepaint();
-		JTableHeader header = table.getTableHeader();
-		header.setBackground(Color.green);
-		model.setValueAt(55, 2, 0);
-		model.setValueAt(null, 2, 0);
-		panel_2.add(new JScrollPane(table));*/
 		model = new DefaultTableModel(stock.getMAX(), 1);
 		table = new JTable(model);
 		table.getColumnModel().getColumn(0).setHeaderValue("Stock");
 		table.getTableHeader().resizeAndRepaint();
 		header = table.getTableHeader();
 		header.setBackground(Color.green);
-		//model.setValueAt(15, 3, 0);
 		panel_2.add(new JScrollPane(table));
 	
 
@@ -341,7 +326,7 @@ public class AppView extends JFrame implements ActionListener {
 							try {
 								stock.push(result);
 								model.setValueAt(result,stock.getMAX() - stock.getTop() - 1, 0);
-								System.out.println("Top : " + stock.getTop());
+								//System.out.println("Top : " + stock.getTop());
 							} catch (ArrayIndexOutOfBoundsException e) {
 								System.out.println("Exception catched in push");
 							}
@@ -377,13 +362,12 @@ public class AppView extends JFrame implements ActionListener {
 							while ((j < result)) {
 								try {
 									stock.pop();
-									//model.setValueAt(15, stock.getTop() -1 , 0);
 								} catch (ArrayIndexOutOfBoundsException e) {
 									e.printStackTrace();
 									System.out.println("Exception in pop");
 								}
 								model.setValueAt(null, stock.getMAX() - stock.getTop() -2, 0);
-								System.out.println("Top rem : " + stock.getTop());
+								//System.out.println("Top rem : " + stock.getTop());
 								j++;
 							}
 							dialogFrameRemove();
@@ -406,6 +390,10 @@ public class AppView extends JFrame implements ActionListener {
 		else if (source == emptyButton) {
 			try {
 				stock.clear();
+				for(int i = 0; i < stock.getMAX(); i++)
+				{
+					model.setValueAt(null, i, 0);
+				}
 				dialogFrameEmpty();
 				stock.display();
 

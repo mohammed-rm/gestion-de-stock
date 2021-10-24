@@ -980,3 +980,27 @@ Element(s) successfully deleted to the stock on 2021-10-24T21:39:25.580316200
 Element(s) successfully deleted to the stock on 2021-10-24T21:39:25.581336800
 Element(s) successfully deleted to the stock on 2021-10-24T21:39:25.583317200
 Element(s) successfully deleted to the stock on 2021-10-24T21:39:25.584325700
+the element :1successfully added to the stock on 2021-10-24T21:43:28.382120400
+the element :2successfully added to the stock on 2021-10-24T21:43:28.433123700
+the element :3successfully added to the stock on 2021-10-24T21:43:28.435124100
+the element :4successfully added to the stock on 2021-10-24T21:43:28.436119600
+the element :5successfully added to the stock on 2021-10-24T21:43:28.438123600
+Element(s) successfully deleted to the stock on 2021-10-24T21:43:28.439121900
+Element(s) successfully deleted to the stock on 2021-10-24T21:43:28.441125
+Element(s) successfully deleted to the stock on 2021-10-24T21:43:28.442125100
+Element(s) successfully deleted to the stock on 2021-10-24T21:43:28.443121200
+Element(s) successfully deleted to the stock on 2021-10-24T21:43:28.445121500
+the element :1successfully added to the stock on 2021-10-24T21:43:33.768179900
+the element :1successfully added to the stock on 2021-10-24T21:43:34.188223500
+the element :1successfully added to the stock on 2021-10-24T21:43:35.773111700
+the element :1successfully added to the stock on 2021-10-24T21:43:37.036224200
+the element :1successfully added to the stock on 2021-10-24T21:43:39.858337200
+Element(s) successfully deleted to the stock on 2021-10-24T21:43:42.753824300
+the element :1successfully added to the stock on 2021-10-24T21:43:46.822162500
+the element :1successfully added to the stock on 2021-10-24T21:43:48.119999500
+the element :1successfully added to the stock on 2021-10-24T21:43:49.408165
+the element :1successfully added to the stock on 2021-10-24T21:43:50.500012
+Element(s) successfully deleted to the stock on 2021-10-24T21:43:56.530257800
+Element(s) successfully deleted to the stock on 2021-10-24T21:43:59.470799900
+Element(s) successfully deleted to the stock on 2021-10-24T21:44:04.836171400
+Element(s) successfully deleted to the stock on 2021-10-24T21:44:04.838175700
