@@ -121,7 +121,15 @@ public class AppView extends JFrame implements ActionListener {
 
 		addField.setBounds(ADD_FIELD_X, ADD_FIELD_Y, ADD_FIELD_W, ADD_FIELD_H);
 		removeField.setBounds(REMOVE_FIELD_X, REMOVE_FIELD_Y, REMOVE_FIELD_W, REMOVE_FIELD_H);
-
+		
+		JLabel infoRem = new JLabel();
+		infoRem.setText("Number of products to remove");
+		infoRem.setBounds(270,160,200,200);
+		
+		JLabel infoAdd = new JLabel();
+		infoAdd.setText("Product to add");
+		infoAdd.setBounds(310,60,200,200);
+		
 		// Current static time
 		reelTimeClock = new JLabel();
 		currentDate = new Date();
@@ -141,6 +149,8 @@ public class AppView extends JFrame implements ActionListener {
 		panel_1.add(removeField);
 		panel_1.add(reelTimeClock);
 		panel_1.add(warningText);
+		panel_1.add(infoRem);
+		panel_1.add(infoAdd);
 
 		// Icon path
 		String imgUrl = "images/failure.png";
@@ -160,6 +170,8 @@ public class AppView extends JFrame implements ActionListener {
 		tab.add("Edit Stock", panel_1);
 		tab.add("Show Stock", panel_2);
 		tab.add("About", panel_3);
+		
+		
 
 		// Add the tab to the main frame
 		frame.add(tab);
