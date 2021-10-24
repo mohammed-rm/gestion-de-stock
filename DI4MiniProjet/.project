@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>backup/backup_file.txt</name>
+			<type>1</type>
+			<location>C:/Users/RMICH Mohammed/Desktop/backup_file.txt</location>
+		</link>
+	</linkedResources>
 </projectDescription>
