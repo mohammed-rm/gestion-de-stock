@@ -57,18 +57,32 @@ public class Stock extends Subject{
 	/*********************************************************************/
 	
 	
-	public void push(int elt)
+	public void push(int elt) throws ArrayIndexOutOfBoundsException
 	{
-		if(top >= MAX-1)
+		if(top>=MAX)
 		{
 			System.out.println("stack overflow");
+			notifyUpdate(new Message("Warning ! product not stocked, the stock is full !"));
+			throw new ArrayIndexOutOfBoundsException();
 		}
 		else 
 		{
 			top++;
 			stack[top]=elt;
-			notifyObservers();
-		}
+			try {
+				notifyUpdate(new Message("the last product produced and still stored is :"+peek()));
+			} catch (ArrayIndexOutOfBoundsException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    if(top==MAX-1) {
+		    	 notifyUpdate(new Message("Warning ! the stock is full !"));
+		    }
+		    if(top==MAX-2) {
+		    	 notifyUpdate(new Message("Warning ! the stock is almost full !"));
+		    }
+		    
+		 }
 	}
 	
 	public void display()
@@ -79,26 +93,43 @@ public class Stock extends Subject{
 			System.out.println(stack[i]);
 		}
 	}
-	public void pop()
+	public void pop() throws ArrayIndexOutOfBoundsException
 	{
 		if(top<0)
 		{
 			System.out.println("stack underflow");
-		
+			throw new ArrayIndexOutOfBoundsException();
 		}
 		else 
 		{   
 			top--;
-			notifyObservers();
-		}
+			if(top==0) 
+				{
+					notifyUpdate(new Message("Warning ! the stock is almost empty !"));
+				}
+			if(top==-1)
+				{
+					notifyUpdate(new Message("Warning ! the stock is empty !"));
+				}
+			try 
+				{
+					notifyUpdate(new Message("the last product produced and still stored is :"+peek()));
+				} catch (ArrayIndexOutOfBoundsException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			
+		 }
 	}
 	
 	
-	public int peek() 
+	public int peek() throws ArrayIndexOutOfBoundsException
 	{
-		if(top==-1) {
+		if(top==-1) 
+		{
 			System.out.println("stack underflow");
-			return -1;    //add exception here
+			throw new ArrayIndexOutOfBoundsException();
 		}
 		else
 		{
@@ -118,14 +149,18 @@ public class Stock extends Subject{
 		return false;
 	}
 
-    public void clear() 
-{
-		while (top>-1) {
-			top--;
-			 
-			notifyObservers();
-	    }
-}
+	public void clear() throws Exception 
+	{       if(top<=-1) {
+		    notifyUpdate(new Message("Warning ! the stock is already CLEARED !"));
+		    throw new Exception();
+	}
+
+			while (top>-1) 
+			{
+				top--;
+			}
+			 notifyUpdate(new Message("Warning ! the stock is CLEARED !"));
+	}
 
 
 	/**

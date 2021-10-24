@@ -1,5 +1,6 @@
 package users;
 
+import management.Message;
 import management.Stock;
 import notification.Observer;
 
@@ -24,6 +25,13 @@ public class Producer implements Observer{
 	public Producer(String prodName, Stock stock) {
 		this.prodName = prodName;
 		this.stock = stock;
+	}
+	
+	/**
+	 * @param prodName
+	 */
+	public Producer(String prodName) {
+		this.prodName = prodName;
 	}
 	
 	/**
@@ -81,9 +89,9 @@ public class Producer implements Observer{
 
 
 	@Override
-	public void update() {
+	public void update(Message msg) {
 		// TODO Auto-generated method stub
-		
+		 System.out.println("producer"+getProdName()+" got this message :" + msg.getMessageContent());
 	}
 	
 	

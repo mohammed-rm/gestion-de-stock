@@ -1,5 +1,7 @@
 package notification;
 
+import management.Message;
+
 /**
  * Abstract class to allows concrete observers to be notified when stock is
  * modified
@@ -7,5 +9,5 @@ package notification;
  */
 public interface Observer {
 
-	public abstract void update();
+	public abstract void update(Message msg);
 }

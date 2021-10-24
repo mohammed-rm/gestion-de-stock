@@ -327,8 +327,11 @@ public class AppView extends JFrame implements ActionListener {
 					// There is a valid quantity
 					if (isNumber) {
 						result = Integer.parseInt(input);
-						if ((result > 0) && (!stock.isEmpty())) {
-							stock.pop();
+						if ((result > 0)) {
+							int j = 0;
+							while((!stock.isEmpty()) && (j < result)){
+								stock.pop();
+								j++;}
 							data.saveIntoFile(input + " element(s) successfully removed from the stock on " + LocalDateTime.now());
 							dialogFrameRemove();
 							stock.display();

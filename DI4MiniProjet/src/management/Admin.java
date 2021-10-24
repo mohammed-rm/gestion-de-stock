@@ -8,6 +8,39 @@ public class Admin implements Observer{
 	private Integer AdminId;
 	private Stock stock;
 	
+	public Admin(int idAD) {
+		createStock();
+		AdminId=idAD;
+	}
+	
+	/**
+	 * @return the adminId
+	 */
+	public Integer getAdminId() {
+		return AdminId;
+	}
+
+	/**
+	 * @return the stock
+	 */
+	public Stock getStock() {
+		return stock;
+	}
+
+	/**
+	 * @param adminId the adminId to set
+	 */
+	public void setAdminId(Integer adminId) {
+		AdminId = adminId;
+	}
+
+	/**
+	 * @param stock the stock to set
+	 */
+	public void setStock(Stock stock) {
+		this.stock = stock;
+	}
+
 	/**
 	 * Allows the administrator to create the stock
 	 */
@@ -38,9 +71,10 @@ public class Admin implements Observer{
 	 *
 	 */
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
+	public void update(Message msg) {
 		
+	        System.out.println("Admin "+getAdminId()+" received : "  + msg.getMessageContent());
+	    
 	}
 
 }
