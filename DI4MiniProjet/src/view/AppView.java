@@ -298,7 +298,7 @@ public class AppView extends JFrame implements ActionListener {
 						if ((result > 0) && (!stock.isFull())) {
 							stock.push(result);
 							stock.setTop(result);
-							data.saveIntoFile(input + " elements were successfully added to the stock on " + LocalDateTime.now());
+							data.saveIntoFile(input + " element(s) successfully added to the stock on " + LocalDateTime.now());
 							dialogFrameAdd();
 							//System.out.print(stock);
 							stock.display();
@@ -329,7 +329,7 @@ public class AppView extends JFrame implements ActionListener {
 						result = Integer.parseInt(input);
 						if ((result > 0) && (!stock.isEmpty())) {
 							stock.pop();
-							data.saveIntoFile(input + " elements were successfully removed from the stock on " + LocalDateTime.now());
+							data.saveIntoFile(input + " element(s) successfully removed from the stock on " + LocalDateTime.now());
 							dialogFrameRemove();
 							stock.display();
 						} else {

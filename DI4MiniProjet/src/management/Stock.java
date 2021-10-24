@@ -59,7 +59,7 @@ public class Stock extends Subject{
 	
 	public void push(int elt)
 	{
-		if(top>=MAX)
+		if(top >= MAX-1)
 		{
 			System.out.println("stack overflow");
 		}
@@ -73,6 +73,7 @@ public class Stock extends Subject{
 	
 	public void display()
 	{
+		
 		for(int i=0; i<=top;i++) 
 		{
 			System.out.println(stack[i]);
