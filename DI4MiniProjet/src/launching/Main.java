@@ -15,7 +15,7 @@ public class Main {
 		try {
 			Log data = new Log(file_name);
 			data.saveIntoFile("Test");
-			data.saveIntoFile("This is another line of text 4");
+			data.saveIntoFile("This is another line of text 40");
 			System.out.println("Text File Written To " + file_name);
 		} catch (IOException e) {
 			System.out.println("Error");

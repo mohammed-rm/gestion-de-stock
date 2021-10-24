@@ -3,6 +3,7 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -21,7 +22,7 @@ public class AppView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private Stock stock;
-	
+
 	private JFrame frame;
 	private JPanel panel_1, panel_2, panel_3;
 	private JTabbedPane tab;
@@ -90,19 +91,15 @@ public class AppView extends JFrame implements ActionListener {
 	/**
 	 * Default Builder
 	 */
-	public AppView(Stock st){
+	public AppView(Stock st) {
 		try {
 			this.stock = st;
 			buildWindow();
-			// make a save when we close the app
-			// TODO
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	/**
 	 * GUI builder
 	 */
@@ -214,6 +211,7 @@ public class AppView extends JFrame implements ActionListener {
 
 	/**
 	 * Frame builder to respond when an action is made on a button
+	 * 
 	 * @param message
 	 * @param iconPath
 	 */
@@ -279,57 +277,97 @@ public class AppView extends JFrame implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		// TODO Auto-generated method stub
 		Object source = event.getSource();
 		String input = new String();
 		int result;
+		Stock stock = new Stock();
 
+		// When add to stock button is clicked on
 		if (source == addButton) {
 			try {
-				Stock stock = new Stock();
-				input = addField.getText();
-				result = Integer.parseInt(input);
-				if ( (result > 0) && (result <= stock.getMAX()) )
-				{
-					dialogFrameAdd();
-					System.out.print(input);
-				}
-				else {
-					dialogFrameError();
-				}
-			} catch (Exception e) {
-				dialogFrameError();
-				e.printStackTrace();
-			}
-		} else if (source == removeButton) {
-			try {
-				Stock stock = new Stock();
-				input = removeField.getText();
-				result = Integer.parseInt(input);
-				if ( (result > 0) && (result <= stock.getMAX()) )
-				{
-					dialogFrameRemove();
-					System.out.print(input);
-				}
-				else {
-					dialogFrameError();
+				// When an entry was given
+				if (addField.getText().length() != 0) {
+					input = addField.getText();
+					String possibleNumber = input;
+					boolean isNumber = Pattern.matches("[0-9]+", possibleNumber);
+					// There is a valid quantity
+					if (isNumber) {
+						result = Integer.parseInt(input);
+						if ((result > 0) && (!stock.isFull())) {
+							stock.push(result);
+							stock.setTop(result);
+							dialogFrameAdd();
+							//System.out.print(stock);
+							stock.display();
+						} else {
+							dialogFrameError();
+						}
+					} else {
+						System.out.println("Enter a valid number!" + "\n");
+					}
+				} else {
+					System.out.println("No entry detected!" + "\n");
 				}
 			} catch (Exception e) {
 				dialogFrameError();
 				e.printStackTrace();
 			}
 		}
-
+		// When remove from stock button is clicked on
+		else if (source == removeButton) {
+			try {
+				// When an entry was given
+				if (removeField.getText().length() != 0) {
+					input = removeField.getText();
+					String possibleNumber = input;
+					boolean isNumber = Pattern.matches("[0-9]+", possibleNumber);
+					// There is a valid quantity
+					if (isNumber) {
+						result = Integer.parseInt(input);
+						if ((result > 0) && (!stock.isEmpty())) {
+							stock.pop();
+							dialogFrameRemove();
+							stock.display();
+						} else {
+							dialogFrameError();
+						}
+					} else {
+						System.out.println("Enter a valid number!" + "\n");
+					}
+				} else {
+					System.out.println("No entry detected!" + "\n");
+				}
+			} catch (Exception e) {
+				dialogFrameError();
+				e.printStackTrace();
+			}
+		}
+		// When empty button is clicked on
 		else if (source == emptyButton) {
 			try {
-				input = addField.getText();
+				stock.clear();
 				dialogFrameEmpty();
+				stock.display();
 
 			} catch (Exception e) {
 				dialogFrameError();
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * @return the stock
+	 */
+	public Stock getStock() {
+		return stock;
+	}
+
+	/**
+	 * @param stock the stock to set
+	 */
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 
 	/**

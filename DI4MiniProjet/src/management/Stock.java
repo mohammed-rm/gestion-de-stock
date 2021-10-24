@@ -9,7 +9,7 @@ public class Stock extends Subject{
 	/*********************************************************************/
 	
 	private int top;
-	private static final Integer MAX = 20;
+	private static final Integer MAX = 2000;
 	private int stack[];
 	
 	
@@ -71,7 +71,7 @@ public class Stock extends Subject{
 		}
 	}
 	
-	public void afficher()
+	public void display()
 	{
 		for(int i=0; i<=top;i++) 
 		{
@@ -125,4 +125,30 @@ public class Stock extends Subject{
 			notifyObservers();
 	    }
 }
+
+
+	/**
+	 * @return the max
+	 */
+	public static Integer getMax() {
+		return MAX;
+	}
+
+
+	/**
+	 * @param top the top to set
+	 */
+	public void setTop(int top) {
+		this.top = top;
+	}
+
+
+	/**
+	 * @param stack the stack to set
+	 */
+	public void setStack(int[] stack) {
+		this.stack = stack;
+	}
+    
+    
 }
