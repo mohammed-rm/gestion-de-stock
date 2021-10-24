@@ -1083,3 +1083,13 @@ Element(s) successfully deleted to the stock on 2021-10-24T21:55:29.952278200
 Element(s) successfully deleted to the stock on 2021-10-24T21:55:33.866303
 Element(s) successfully deleted to the stock on 2021-10-24T21:55:33.867309
 Element(s) successfully deleted to the stock on 2021-10-24T21:55:37.648264400
+the element :1successfully added to the stock on 2021-10-24T21:57:47.697653800
+the element :2successfully added to the stock on 2021-10-24T21:57:47.757651700
+the element :3successfully added to the stock on 2021-10-24T21:57:47.759653500
+the element :4successfully added to the stock on 2021-10-24T21:57:47.760652100
+the element :5successfully added to the stock on 2021-10-24T21:57:47.762653100
+Element(s) successfully deleted to the stock on 2021-10-24T21:57:47.763650800
+Element(s) successfully deleted to the stock on 2021-10-24T21:57:47.765652900
+Element(s) successfully deleted to the stock on 2021-10-24T21:57:47.767653300
+Element(s) successfully deleted to the stock on 2021-10-24T21:57:47.768652900
+Element(s) successfully deleted to the stock on 2021-10-24T21:57:47.770651800
