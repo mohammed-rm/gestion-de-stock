@@ -2,16 +2,13 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalTime;
 import java.util.Date;
 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -23,7 +20,8 @@ import management.Stock;
 public class AppView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-
+	private Stock stock;
+	
 	private JFrame frame;
 	private JPanel panel_1, panel_2, panel_3;
 	private JTabbedPane tab;
@@ -90,11 +88,27 @@ public class AppView extends JFrame implements ActionListener {
 	private static final String EMPTY_BUTTON_NAME = "Empty All Stock";
 
 	/**
-	 * Default GUI Builder
+	 * Default Builder
 	 */
-	AppView() {
+	public AppView(Stock st){
+		try {
+			this.stock = st;
+			buildWindow();
+			// make a save when we close the app
+			// TODO
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * GUI builder
+	 */
+	public void buildWindow() {
 
-		init();
+		initComponents();
 
 		// Configuration
 		mainFrameSettings();
@@ -109,6 +123,7 @@ public class AppView extends JFrame implements ActionListener {
 		addField.setBounds(ADD_FIELD_X, ADD_FIELD_Y, ADD_FIELD_W, ADD_FIELD_H);
 		removeField.setBounds(REMOVE_FIELD_X, REMOVE_FIELD_Y, REMOVE_FIELD_W, REMOVE_FIELD_H);
 
+		// Current static time
 		reelTimeClock = new JLabel();
 		currentDate = new Date();
 		reelTimeClock.setText("" + currentDate);
@@ -138,9 +153,9 @@ public class AppView extends JFrame implements ActionListener {
 		JLabel img = new JLabel(new ImageIcon(getClass().getClassLoader().getResource(imgUrl)));
 		img.setBounds(WARNING_ICON_X, WARNING_ICON_Y, WARNING_ICON_W, WARNING_ICON_H);
 
-		GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
-		vGroup.addGroup(layout.createParallelGroup().addComponent(img));
-		layout.setVerticalGroup(vGroup);
+		GroupLayout.SequentialGroup group = layout.createSequentialGroup();
+		group.addGroup(layout.createParallelGroup().addComponent(img));
+		layout.setVerticalGroup(group);
 
 		// Associate panels to tab
 		tab.add("Edit Stock", panel_1);
@@ -155,9 +170,9 @@ public class AppView extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Frame, tab and panels creation
+	 * Method to initiate window components
 	 */
-	public void init() {
+	public void initComponents() {
 		frame = new JFrame();
 		frame.pack();
 
@@ -171,7 +186,7 @@ public class AppView extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * 
+	 * Configuration method for the main frame
 	 */
 	public void mainFrameSettings() {
 		frame.setTitle(FRAME_TITLE);
@@ -182,7 +197,7 @@ public class AppView extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * 
+	 * Configuration method for the buttons
 	 */
 	public void setButtons() {
 		addButton = new JButton(ADD_BUTTON_NAME);
@@ -197,6 +212,11 @@ public class AppView extends JFrame implements ActionListener {
 				EMPTY_BUTTON_SIZE_Y);
 	}
 
+	/**
+	 * Frame builder to respond when an action is made on a button
+	 * @param message
+	 * @param iconPath
+	 */
 	public void dialogFrame(String message, String iconPath) {
 		JFrame addFrame = new JFrame(FRAME_TITLE);
 		addFrame.setSize(400, 180);
@@ -218,30 +238,45 @@ public class AppView extends JFrame implements ActionListener {
 		JLabel img = new JLabel(new ImageIcon(getClass().getClassLoader().getResource(imgUrl)));
 		img.setBounds(20, 10, 100, 100);
 
-		GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
-		vGroup.addGroup(layout.createParallelGroup().addComponent(img));
-		layout.setVerticalGroup(vGroup);
+		GroupLayout.SequentialGroup group = layout.createSequentialGroup();
+		group.addGroup(layout.createParallelGroup().addComponent(img));
+		layout.setVerticalGroup(group);
 		addFrame.add(l);
 	}
 
+	/**
+	 * Sub frame that pops when an element is added
+	 */
 	public void dialogFrameAdd() {
 		dialogFrame("Element added succefully", "images/succes.png");
 	}
 
+	/**
+	 * Sub frame that pops when an element is removed
+	 */
 	public void dialogFrameRemove() {
 		dialogFrame("Element removed succefully", "images/succes.png");
 	}
 
+	/**
+	 * Sub frame that pops when the stock is emptied
+	 */
 	public void dialogFrameEmpty() {
 		dialogFrame("Stock is now empty", "images/succes.png");
 
 	}
 
+	/**
+	 * Sub frame that pops when an error happens
+	 */
 	public void dialogFrameError() {
 		dialogFrame("An error has occured!", "images/failure.png");
 
 	}
 
+	/**
+	 * Action to buttons
+	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		// TODO Auto-generated method stub
@@ -295,11 +330,6 @@ public class AppView extends JFrame implements ActionListener {
 				e.printStackTrace();
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		new AppView();
-
 	}
 
 	/**
