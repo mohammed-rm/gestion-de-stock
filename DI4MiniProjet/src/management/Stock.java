@@ -99,7 +99,7 @@ public class Stock extends Subject{
 	public void display()
 	{
 		
-		for(int i=0; i<=top;i++) 
+		for(int i=0; i<=top;i++)
 		{
 			System.out.println(stack[i]);
 		}

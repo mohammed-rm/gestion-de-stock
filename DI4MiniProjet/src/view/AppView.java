@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
@@ -12,10 +13,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import management.Log;
 import management.Stock;
@@ -36,6 +41,9 @@ public class AppView extends JFrame implements ActionListener {
 	private Date currentDate;
 	private JLabel reelTimeClock;
 	private JLabel warningText;
+	private DefaultTableModel model;
+	private JTable table;
+	private JTableHeader header;
 
 	private static final int FRAME_SIZE_X = 600;
 	private static final int FRAME_SIZE_Y = 600;
@@ -121,15 +129,15 @@ public class AppView extends JFrame implements ActionListener {
 
 		addField.setBounds(ADD_FIELD_X, ADD_FIELD_Y, ADD_FIELD_W, ADD_FIELD_H);
 		removeField.setBounds(REMOVE_FIELD_X, REMOVE_FIELD_Y, REMOVE_FIELD_W, REMOVE_FIELD_H);
-		
+
 		JLabel infoRem = new JLabel();
 		infoRem.setText("Number of products to remove");
-		infoRem.setBounds(270,160,200,200);
-		
+		infoRem.setBounds(270, 160, 200, 200);
+
 		JLabel infoAdd = new JLabel();
 		infoAdd.setText("Product to add");
-		infoAdd.setBounds(310,60,200,200);
-		
+		infoAdd.setBounds(310, 60, 200, 200);
+
 		// Current static time
 		reelTimeClock = new JLabel();
 		currentDate = new Date();
@@ -166,12 +174,35 @@ public class AppView extends JFrame implements ActionListener {
 		group.addGroup(layout.createParallelGroup().addComponent(img));
 		layout.setVerticalGroup(group);
 
+		// Stack display
+		/*
+		 * String[] columns = new String[] {"Stock"}; String[][] row = new String[5][];
+		 */
+		// JTable table = new JTable(stock.getMAX(),1);
+		/*DefaultTableModel model = new DefaultTableModel(stock.getMAX(), 1);
+		JTable table = new JTable(model);
+		table.getColumnModel().getColumn(0).setHeaderValue("Stock");
+		// Force the header to resize and repaint itself
+		table.getTableHeader().resizeAndRepaint();
+		JTableHeader header = table.getTableHeader();
+		header.setBackground(Color.green);
+		model.setValueAt(55, 2, 0);
+		model.setValueAt(null, 2, 0);
+		panel_2.add(new JScrollPane(table));*/
+		model = new DefaultTableModel(stock.getMAX(), 1);
+		table = new JTable(model);
+		table.getColumnModel().getColumn(0).setHeaderValue("Stock");
+		table.getTableHeader().resizeAndRepaint();
+		header = table.getTableHeader();
+		header.setBackground(Color.green);
+		//model.setValueAt(15, 3, 0);
+		panel_2.add(new JScrollPane(table));
+	
+
 		// Associate panels to tab
 		tab.add("Edit Stock", panel_1);
 		tab.add("Show Stock", panel_2);
 		tab.add("About", panel_3);
-		
-		
 
 		// Add the tab to the main frame
 		frame.add(tab);
@@ -293,9 +324,8 @@ public class AppView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		Object source = event.getSource();
 		String input = new String();
-		Log data = new Log("backup/backup_file.txt");
 		int result;
-
+		
 		// When add to stock button is clicked on
 		if (source == addButton) {
 			try {
@@ -309,13 +339,12 @@ public class AppView extends JFrame implements ActionListener {
 						result = Integer.parseInt(input);
 						if ((result > 0)) {
 							try {
-							stock.push(result);
+								stock.push(result);
+								model.setValueAt(result,stock.getMAX() - stock.getTop() - 1, 0);
+								System.out.println("Top : " + stock.getTop());
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Exception catched in push");
 							}
-							catch(ArrayIndexOutOfBoundsException e)
-				        	{
-				        	System.out.println("Exception catched in push");
-				        	}
-							data.saveIntoFile(input + " element(s) successfully added to the stock on " + LocalDateTime.now());
 							dialogFrameAdd();
 							stock.display();
 						} else {
@@ -345,16 +374,18 @@ public class AppView extends JFrame implements ActionListener {
 						result = Integer.parseInt(input);
 						if ((result > 0)) {
 							int j = 0;
-							while( (j < result)){
+							while ((j < result)) {
 								try {
-								stock.pop();
+									stock.pop();
+									//model.setValueAt(15, stock.getTop() -1 , 0);
+								} catch (ArrayIndexOutOfBoundsException e) {
+									e.printStackTrace();
+									System.out.println("Exception in pop");
 								}
-								catch(ArrayIndexOutOfBoundsException e)
-					        	{
-						        e.printStackTrace();  System.out.println("Exception in pop");
-						        }
-								j++;}
-							data.saveIntoFile(input + " element(s) successfully removed from the stock on " + LocalDateTime.now());
+								model.setValueAt(null, stock.getMAX() - stock.getTop() -2, 0);
+								System.out.println("Top rem : " + stock.getTop());
+								j++;
+							}
 							dialogFrameRemove();
 							stock.display();
 						} else {
@@ -375,7 +406,6 @@ public class AppView extends JFrame implements ActionListener {
 		else if (source == emptyButton) {
 			try {
 				stock.clear();
-				data.saveIntoFile("Stock was successfully emptied on " + LocalDateTime.now());
 				dialogFrameEmpty();
 				stock.display();
 
