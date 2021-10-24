@@ -317,7 +317,6 @@ public class AppView extends JFrame implements ActionListener {
 				        	}
 							data.saveIntoFile(input + " element(s) successfully added to the stock on " + LocalDateTime.now());
 							dialogFrameAdd();
-							//System.out.print(stock);
 							stock.display();
 						} else {
 							dialogFrameError();
