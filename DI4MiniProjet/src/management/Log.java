@@ -11,7 +11,7 @@ public class Log {
 	/*********************************************************************/
 	private String fileName;
 	private String filePath;
-	private boolean fileAppend = true; // To append (true) or to overwrite (false) file content
+	private boolean fileAppend = false; // To append (true) or to overwrite (false) file content
 
 	/*********************************************************************/
 	/****************************** BUILDERS *****************************/

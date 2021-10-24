@@ -273,12 +273,26 @@ public class AppView extends JFrame implements ActionListener {
 	public void dialogFrameAdd() {
 		dialogFrame("Element added succefully", "images/succes.png");
 	}
+	
+	/**
+	 * Sub frame that pops when an element is added
+	 */
+	public void dialogFrameAddFailed() {
+		dialogFrame("Stock is full!", "images/failure.png");
+	}
 
 	/**
 	 * Sub frame that pops when an element is removed
 	 */
 	public void dialogFrameRemove() {
 		dialogFrame("Element removed succefully", "images/succes.png");
+	}
+	
+	/**
+	 * Sub frame that pops when an element is removed
+	 */
+	public void dialogFrameRemoveFailed() {
+		dialogFrame("Cannot remove this quatity!", "images/failure.png");
 	}
 
 	/**
@@ -288,7 +302,23 @@ public class AppView extends JFrame implements ActionListener {
 		dialogFrame("Stock is now empty", "images/succes.png");
 
 	}
+	
+	/**
+	 * Sub frame that pops when the stock is emptied
+	 */
+	public void dialogFrameEmptyFailed() {
+		dialogFrame("Stock is already empty!", "images/failure.png");
 
+	}
+
+	/**
+	 * Sub frame that pops when an error happens
+	 */
+	public void dialogFrameNoEntry() {
+		dialogFrame("No entry detected!", "images/failure.png");
+
+	}
+	
 	/**
 	 * Sub frame that pops when an error happens
 	 */
@@ -317,27 +347,32 @@ public class AppView extends JFrame implements ActionListener {
 					// There is a valid quantity
 					if (isNumber) {
 						result = Integer.parseInt(input);
-						if ((result > 0)) {
+						if ((result >= 0)) {
 							try {
 								stock.push(result);
 								model.setValueAt(result, stock.getMAX() - stock.getTop() - 1, 0);
+								dialogFrameAdd();
+								stock.display();
 								// System.out.println("Top : " + stock.getTop());
 							} catch (ArrayIndexOutOfBoundsException e) {
+								dialogFrameAddFailed();
 								System.out.println("Exception catched in push");
 							}
-							dialogFrameAdd();
-							stock.display();
+							//dialogFrameAdd();
+							//tock.display();
 						} else {
 							dialogFrameError();
 						}
 					} else {
+						dialogFrameError();
 						System.out.println("Enter a valid number!" + "\n");
 					}
 				} else {
+					dialogFrameNoEntry();
 					System.out.println("No entry detected!" + "\n");
 				}
 			} catch (Exception e) {
-				dialogFrameError();
+				dialogFrameAddFailed();
 				System.out.println("Stock is full, you cannot add more products! ");
 				// e.printStackTrace();
 			}
@@ -369,12 +404,14 @@ public class AppView extends JFrame implements ActionListener {
 							dialogFrameRemove();
 							stock.display();
 						} else {
-							dialogFrameError();
+							System.out.println("You are trying to remove more than the products currently in stock! ");
+							dialogFrameRemoveFailed();
 						}
 					} else {
 						System.out.println("Enter a valid number!" + "\n");
 					}
 				} else {
+					dialogFrameNoEntry();
 					System.out.println("No entry detected!" + "\n");
 				}
 			} catch (Exception e) {
@@ -394,7 +431,7 @@ public class AppView extends JFrame implements ActionListener {
 				stock.display();
 
 			} catch (Exception e) {
-				dialogFrameError();
+				dialogFrameEmptyFailed();
 				System.out.println("Stock is already empty! ");
 				// e.printStackTrace();
 			}
