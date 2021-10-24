@@ -1,13 +1,11 @@
 package launching;
 
-import java.io.IOException;
-
-import management.Log;
 import management.Stock;
 import view.AppView;
 
 public class Main {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Stock stock = new Stock();
