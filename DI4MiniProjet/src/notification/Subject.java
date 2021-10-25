@@ -11,14 +11,22 @@ import management.Message;
  */
 public abstract class Subject {
 
+	/*********************************************************************/
+	/***************************** ATTRIBUTES ****************************/
+	/*********************************************************************/
 	// Observers list
 	private List<Observer> observers = new ArrayList<Observer>();
 
-	public Subject() 
-	{
+	/*********************************************************************/
+	/****************************** BUILDERS *****************************/
+	/*********************************************************************/
+	/**
+	 * Default builder
+	 */
+	public Subject() {
 		observers = new ArrayList<Observer>();
 	}
-	
+
 	/**
 	 * @param observer
 	 */
@@ -36,10 +44,8 @@ public abstract class Subject {
 	/**
 	 * Notify observers
 	 */
-	public void notifyUpdate(Message message) 
-	{
-		for (Observer observer : observers) 
-		{
+	public void notifyUpdate(Message message) {
+		for (Observer observer : observers) {
 			observer.update(message);
 		}
 	}

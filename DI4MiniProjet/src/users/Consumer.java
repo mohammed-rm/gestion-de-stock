@@ -4,21 +4,21 @@ import management.Message;
 import management.Stock;
 import notification.Observer;
 
-public class Consumer implements Observer{
+public class Consumer implements Observer {
 
 	/*********************************************************************/
 	/***************************** ATTRIBUTES ****************************/
 	/*********************************************************************/
-	
 	private int consID;
 	private String consName;
 	private Stock stock;
-	
-	
+
 	/*********************************************************************/
 	/****************************** BUILDERS *****************************/
 	/*********************************************************************/
 	/**
+	 * Builder
+	 * 
 	 * @param consName
 	 * @param stock
 	 */
@@ -26,15 +26,19 @@ public class Consumer implements Observer{
 		this.consName = consName;
 		this.stock = stock;
 	}
-	
+
 	/**
+	 * Builder
+	 * 
 	 * @param consName
 	 */
 	public Consumer(String consName) {
 		this.consName = consName;
 	}
-	
+
 	/**
+	 * Builder
+	 * 
 	 * @param consName
 	 * @param stock
 	 */
@@ -43,13 +47,10 @@ public class Consumer implements Observer{
 		this.consName = consName;
 		this.consID = id;
 	}
-	
-	
+
 	/*********************************************************************/
 	/***************************** GETS/SETS *****************************/
 	/*********************************************************************/
-	
-	
 	/**
 	 * @return the consID
 	 */
@@ -70,18 +71,21 @@ public class Consumer implements Observer{
 	public String getConsName() {
 		return consName;
 	}
+
 	/**
 	 * @param consName the consName to set
 	 */
 	public void setConsName(String consName) {
 		this.consName = consName;
 	}
+
 	/**
 	 * @return the stock
 	 */
 	public Stock getStock() {
 		return stock;
 	}
+
 	/**
 	 * @param stock the stock to set
 	 */
@@ -89,11 +93,18 @@ public class Consumer implements Observer{
 		this.stock = stock;
 	}
 
-
+	/*********************************************************************/
+	/***************************** METHODS *******************************/
+	/*********************************************************************/
+	/**
+	 * Update method
+	 * 
+	 * @param msg
+	 */
 	@Override
 	public void update(Message msg) {
 		// TODO Auto-generated method stub
-		 System.out.println(" Consumer "+getConsName()+" got this message : " + msg.getMessageContent());
-	}	
-	
+		System.out.println(" Consumer " + getConsName() + " got this message : " + msg.getMessageContent());
+	}
+
 }

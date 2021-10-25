@@ -3,16 +3,34 @@ package management;
 import notification.Observer;
 import users.*;
 
-public class Admin implements Observer{
+/**
+ * Admin class to manage the stock and users
+ *
+ */
+public class Admin implements Observer {
 
+	/*********************************************************************/
+	/***************************** ATTRIBUTES ****************************/
+	/*********************************************************************/
 	private Integer AdminId;
 	private Stock stock;
-	
+
+	/*********************************************************************/
+	/****************************** BUILDERS *****************************/
+	/*********************************************************************/
+	/**
+	 * Builder
+	 * 
+	 * @param idAD
+	 */
 	public Admin(int idAD) {
 		createStock();
-		AdminId=idAD;
+		AdminId = idAD;
 	}
-	
+
+	/*********************************************************************/
+	/***************************** GETS/SETS *****************************/
+	/*********************************************************************/
 	/**
 	 * @return the adminId
 	 */
@@ -41,40 +59,46 @@ public class Admin implements Observer{
 		this.stock = stock;
 	}
 
+	/*********************************************************************/
+	/***************************** METHODS *******************************/
+	/*********************************************************************/
 	/**
 	 * Allows the administrator to create the stock
 	 */
-	public void createStock()
-	{
+	public void createStock() {
 		stock = new Stock();
 	}
-	
+
 	/**
 	 * Allows the administrator to create a new consumer
+	 * 
 	 * @param name
 	 * @param id
 	 */
-	public void createConsumer(String name, int id)
-	{
+	public void createConsumer(String name, int id) {
 		Consumer consumer = new Consumer(name, id);
 	}
-	
+
 	/**
 	 * Allows the administrator to create a new producer
+	 * 
 	 * @param name
 	 * @param id
 	 */
 	public void createProducer(String name, int id) {
 		Producer producer = new Producer(name, id);
 	}
+
 	/**
-	 *
+	 * Update method
+	 * 
+	 * @param msg
 	 */
 	@Override
 	public void update(Message msg) {
-		
-	        System.out.println("Admin "+getAdminId()+" received : "  + msg.getMessageContent());
-	    
+
+		System.out.println("Admin " + getAdminId() + " received : " + msg.getMessageContent());
+
 	}
 
 }

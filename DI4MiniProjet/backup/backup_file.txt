@@ -1,1 +1,1 @@
-Element(s) successfully deleted to the stock on 2021-10-24T23:31:24.950949800
+Product successfully deleted from the stock on 2021-10-25T06:50:12.967796100

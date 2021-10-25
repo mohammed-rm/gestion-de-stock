@@ -4,6 +4,10 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 
+/**
+ * Class to save stock activity
+ *
+ */
 public class Log {
 
 	/*********************************************************************/
@@ -27,6 +31,7 @@ public class Log {
 
 	/**
 	 * Method to save stock data into a text file
+	 * 
 	 * @param data
 	 * @throws IOException
 	 */
@@ -36,11 +41,10 @@ public class Log {
 		text.printf("%s" + "%n", data);
 		text.close();
 	}
+
 	/*********************************************************************/
 	/***************************** GETS/SETS *****************************/
 	/*********************************************************************/
-	
-	
 	/**
 	 * @return the filePath
 	 */

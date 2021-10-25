@@ -23,6 +23,9 @@ import management.Stock;
 
 public class AppView extends JFrame implements ActionListener {
 
+	/*********************************************************************/
+	/***************************** ATTRIBUTES ****************************/
+	/*********************************************************************/
 	private static final long serialVersionUID = 1L;
 	private Stock stock;
 
@@ -94,6 +97,9 @@ public class AppView extends JFrame implements ActionListener {
 	private static final String REMOVE_BUTTON_NAME = "Remove From Stock";
 	private static final String EMPTY_BUTTON_NAME = "Empty All Stock";
 
+	/*********************************************************************/
+	/****************************** BUILDERS *****************************/
+	/*********************************************************************/
 	/**
 	 * Default Builder
 	 */
@@ -106,6 +112,9 @@ public class AppView extends JFrame implements ActionListener {
 		}
 	}
 
+	/*********************************************************************/
+	/***************************** METHODS *******************************/
+	/*********************************************************************/
 	/**
 	 * GUI builder
 	 */
@@ -178,6 +187,10 @@ public class AppView extends JFrame implements ActionListener {
 		header = table.getTableHeader();
 		header.setBackground(Color.green);
 		panel_2.add(new JScrollPane(table));
+
+		// About
+		JLabel about = new JLabel("Application for stock management.");
+		panel_3.add(about);
 
 		// Associate panels to tab
 		tab.add("Edit Stock", panel_1);
@@ -273,9 +286,9 @@ public class AppView extends JFrame implements ActionListener {
 	public void dialogFrameAdd() {
 		dialogFrame("Element added succefully", "images/succes.png");
 	}
-	
+
 	/**
-	 * Sub frame that pops when an element is added
+	 * Sub frame that pops when an element can't be added
 	 */
 	public void dialogFrameAddFailed() {
 		dialogFrame("Stock is full!", "images/failure.png");
@@ -287,9 +300,9 @@ public class AppView extends JFrame implements ActionListener {
 	public void dialogFrameRemove() {
 		dialogFrame("Element removed succefully", "images/succes.png");
 	}
-	
+
 	/**
-	 * Sub frame that pops when an element is removed
+	 * Sub frame that pops when an element can't be removed
 	 */
 	public void dialogFrameRemoveFailed() {
 		dialogFrame("Cannot remove this quatity!", "images/failure.png");
@@ -302,9 +315,9 @@ public class AppView extends JFrame implements ActionListener {
 		dialogFrame("Stock is now empty", "images/succes.png");
 
 	}
-	
+
 	/**
-	 * Sub frame that pops when the stock is emptied
+	 * Sub frame that pops when the stock can't be cleared
 	 */
 	public void dialogFrameEmptyFailed() {
 		dialogFrame("Stock is already empty!", "images/failure.png");
@@ -312,13 +325,13 @@ public class AppView extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Sub frame that pops when an error happens
+	 * Sub frame that pops when no entry is given
 	 */
 	public void dialogFrameNoEntry() {
 		dialogFrame("No entry detected!", "images/failure.png");
 
 	}
-	
+
 	/**
 	 * Sub frame that pops when an error happens
 	 */
@@ -329,6 +342,8 @@ public class AppView extends JFrame implements ActionListener {
 
 	/**
 	 * Action to buttons
+	 * 
+	 * @param event
 	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
@@ -353,13 +368,12 @@ public class AppView extends JFrame implements ActionListener {
 								model.setValueAt(result, stock.getMAX() - stock.getTop() - 1, 0);
 								dialogFrameAdd();
 								stock.display();
-								// System.out.println("Top : " + stock.getTop());
+
 							} catch (ArrayIndexOutOfBoundsException e) {
 								dialogFrameAddFailed();
 								System.out.println("Exception catched in push");
 							}
-							//dialogFrameAdd();
-							//tock.display();
+
 						} else {
 							dialogFrameError();
 						}
@@ -388,7 +402,7 @@ public class AppView extends JFrame implements ActionListener {
 					// There is a valid quantity
 					if (isNumber) {
 						result = Integer.parseInt(input);
-						if ((result <= stock.getTop()+1)) {
+						if ((result <= stock.getTop() + 1)) {
 							int j = 0;
 							while ((j < result)) {
 								try {
@@ -398,7 +412,7 @@ public class AppView extends JFrame implements ActionListener {
 									System.out.println("Exception in pop");
 								}
 								model.setValueAt(null, stock.getMAX() - stock.getTop() - 2, 0);
-								// System.out.println("Top rem : " + stock.getTop());
+
 								j++;
 							}
 							dialogFrameRemove();
@@ -408,6 +422,7 @@ public class AppView extends JFrame implements ActionListener {
 							dialogFrameRemoveFailed();
 						}
 					} else {
+						dialogFrameError();
 						System.out.println("Enter a valid number!" + "\n");
 					}
 				} else {
@@ -438,6 +453,9 @@ public class AppView extends JFrame implements ActionListener {
 		}
 	}
 
+	/*********************************************************************/
+	/***************************** GETS/SETS *****************************/
+	/*********************************************************************/
 	/**
 	 * @return the stock
 	 */
